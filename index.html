@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página personal de Manuel Ignacio Coello Olmos, estudiante de Administración de Negocios.">
+  <title>Manuel Ignacio Coello Olmos</title>
+  <style>
+    :root {
+      --site-primary: #153c35;
+      --site-secondary: #d8e7df;
+      --site-background: #f5f6f1;
+      --site-on-primary: #ffffff;
+      --site-on-secondary: #183a32;
+      --site-on-background: #182a25;
+      --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --site-font-heading: Georgia, "Times New Roman", serif;
+      --site-heading-scale: 1;
+      --site-spacing-scale: 1;
+      --site-radius-scale: 1;
+      color-scheme: light dark;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: light-dark(#f5f6f1, #111916);
+      color: light-dark(#182a25, #e8eee9);
+      font-family: var(--site-font-body);
+    }
+    .app {
+      min-height: 100vh;
+      width: 100%;
+      border-radius: 0;
+      overflow: hidden;
+      background-color: light-dark(var(--site-background), #111916);
+      color: light-dark(var(--site-on-background), #e8eee9);
+    }
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      background: var(--site-primary);
+      color: var(--site-on-primary);
+      padding: calc(88px * var(--site-spacing-scale)) max(7vw, 24px);
+      overflow: hidden;
+    }
+    .hero-content { width: min(850px, 100%); }
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-family: var(--site-font-heading);
+      font-size: clamp(48px, calc(7.5vw * var(--site-heading-scale)), 92px);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .99;
+    }
+    .hero-subtitle {
+      margin: 28px 0 0;
+      color: #d4e5dc;
+      font-size: clamp(16px, 2vw, 20px);
+      letter-spacing: .02em;
+    }
+    main { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .about {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: clamp(35px, 8vw, 110px);
+      padding: calc(100px * var(--site-spacing-scale)) 0;
+      align-items: start;
+    }
+    .section-label {
+      margin: 8px 0 0;
+      color: #527268;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0 0 26px;
+      font-family: var(--site-font-heading);
+      font-size: calc(clamp(34px, 4.5vw, 52px) * var(--site-heading-scale));
+      font-weight: 500;
+      letter-spacing: -.04em;
+      line-height: 1.08;
+    }
+    .about-copy p {
+      max-width: 650px;
+      margin: 0 0 18px;
+      color: light-dark(#52635c, #b7c5bd);
+      font-size: 17px;
+      line-height: 1.85;
+    }
+    .interests {
+      padding: calc(72px * var(--site-spacing-scale)) 0 calc(94px * var(--site-spacing-scale));
+      border-top: 1px solid light-dark(#dce3dc, #2c3b34);
+    }
+    .interests-head { display: flex; justify-content: space-between; gap: 24px; align-items: end; margin-bottom: 34px; }
+    .interests-head p { max-width: 330px; margin: 0 0 5px; color: light-dark(#65746d, #aebdb4); line-height: 1.65; font-size: 14px; }
+    .friend-link:focus-visible { outline: 3px solid #8ba99a; outline-offset: 4px; }
+    .friends { padding: 20px 0 85px; border-top: 1px solid light-dark(#dce3dc, #2c3b34); }
+    .friend-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .friend-link { display: block; min-height: 130px; padding: 24px; color: inherit; text-decoration: none; font-family: var(--site-font-heading); font-size: 22px; border: 1px dashed light-dark(#aebeb2, #52685b); border-radius: calc(18px * var(--site-radius-scale)); background: light-dark(#e8eee8, #1d2a24); transition: transform .2s ease, border-color .2s ease; }
+    .friend-link:hover { transform: translateY(-4px); border-color: #8ba99a; }
+    .closing {
+      margin-bottom: 70px;
+      padding: calc(43px * var(--site-spacing-scale)) clamp(25px, 5vw, 58px);
+      border-radius: calc(20px * var(--site-radius-scale));
+      background: var(--site-secondary);
+      color: var(--site-on-secondary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .closing p { margin: 0; font-family: var(--site-font-heading); font-size: clamp(23px, 3vw, 34px); line-height: 1.25; }
+    .closing small { display: block; margin-top: 10px; color: #526d61; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+    @media (max-width: 700px) {
+      .hero { min-height: 510px; padding-top: 70px; padding-bottom: 65px; }
+      .about { grid-template-columns: 1fr; gap: 22px; padding: 70px 0; }
+      .interests-head { display: block; }
+      .interests-head p { margin-top: 12px; }
+      .friend-links { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Manuel Ignacio<br>Coello Olmos</h1>
+        <p class="hero-subtitle">Estudiante de Administración de Negocios</p>
+      </div>
+    </header>
+    <main>
+      <section class="about" id="sobre-mi">
+        <div class="about-copy">
+          <h2>Un poco sobre quién soy.</h2>
+          <p>Carrera de Administración de Negocios.</p>
+          <p>Bueno mis hobbies son los deportes me gusta mucho el futbol tambien entreno en el gym y a veces corro, ahora me dedico solo a estudiar ósea a mi carrera</p>
+        </div>
+      </section>
+      <section class="interests" id="intereses">
+        <div class="interests-head">
+          <div>
+            <h2>Cosas que hago en mi tiempo libre</h2>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p>MIS HOBBIES SON: EL GIMNASIO, CORRER Y EL FUTBOL</p>
+        </div>
+      </section>
+      <section class="friends" id="amigos">
+        <h2>Las paginas de mis amigos</h2>
+        <div class="friend-links">
+          <a class="friend-link" href="https://rodrigoorihuelazuzunaga.github.io/" target="_blank" rel="noopener">Rodrigo orihuela</a>
+          <a class="friend-link" href="https://share.google/8ygiOymLsq0Y4XIgD" target="_blank" rel="noopener">Eduardo Sebastian</a>
+        </div>
+      </section>
+      <section class="friends" id="contacto">
+        <h2>Mi correo</h2>
+        <div class="friend-links">
+          <a class="friend-link" style="overflow-wrap:anywhere" href="mailto:manueligcoello21@gmail.com">manueligcoello21@gmail.com</a>
+        </div>
+      </section>
+      <section class="closing">
+        <div><p>Mi enfoque actual está en crecer y avanzar en mi carrera.</p><small>Administración de Negocios</small></div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
